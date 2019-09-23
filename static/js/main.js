@@ -249,7 +249,7 @@
     }
 
     // Recent Report
-    
+
 
     // Percent Chart
     var ctx = document.getElementById("percent-chart");
@@ -617,8 +617,8 @@
           type: 'line',
           defaultFontFamily: 'Poppins',
           datasets: [{
-            label: "Foods",
-            data: [0, 30, 10, 120, 50, 63, 10],
+            label: "",
+            data: [100, 30, 10, 120, 50, 63, 10],
             backgroundColor: 'transparent',
             borderColor: 'rgba(220,53,69,0.75)',
             borderWidth: 3,
@@ -628,7 +628,7 @@
             pointBackgroundColor: 'rgba(220,53,69,0.75)',
           }, {
             label: "Electronics",
-            data: [0, 50, 40, 80, 40, 79, 120],
+            data: [100, 50, 40, 80, 40, 79, 120],
             backgroundColor: 'transparent',
             borderColor: 'rgba(40,167,69,0.75)',
             borderWidth: 3,
@@ -681,7 +681,7 @@
               },
               scaleLabel: {
                 display: true,
-                labelString: 'Value',
+                labelString: 'Rainfall',
                 fontFamily: "Poppins"
 
               },

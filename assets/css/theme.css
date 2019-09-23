@@ -166,6 +166,10 @@ strong {
     font-size: 30px;
 }
 
+.about_color {
+  color : #F2F3F4
+}
+
 .title-2 {
     text-transform: capitalize;
     font-weight: 400;
@@ -317,6 +321,21 @@ section {
 	padding-bottom: 100px;
     }
 }
+
+.main-content-1 {
+    padding-top: 50px;
+    min-height: 100vh;
+    background: #444;
+}
+
+@media (max-width: 991px) {
+    .main-content-1 {
+        padding-top: 50px;
+	padding-bottom: 100px;
+  background: #444;
+    }
+}
+
 
 .page-content--bgf7 {
     background: #f7f7f7;
@@ -4124,12 +4143,23 @@ section {
     background: #00b5e9;
 }
 
+.dot--black{
+  background: #000;
+}
+
 .dot--green {
     background: #00ad5f;
 }
 
 .dot--red {
     background: #fa4251;
+}
+.dot--violet{
+  background: #8E44AD
+}
+
+.dot--yellow{
+  background: #F1C40F
 }
 
 .chart-note-wrap {
