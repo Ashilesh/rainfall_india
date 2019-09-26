@@ -7,7 +7,9 @@ from .models import Index
 # practice
 def index(request):
     index = Index()
-    return render(request,'index.html',{'index' : index})
+    arr = [0, 2, 6.7, 3, 5.6, 240, 220.5, 300.4, 170.5, 112, 3, 3.7]
+    arr1 =  ['January', 'February', 'March', 'April', 'May','June','July','August','September','Octomber','November','December']
+    return render(request,'index.html',{'index' : index,'arr': arr, 'arr1' : arr1})
 
 def chart(request):
     return render(request, 'chart.html')

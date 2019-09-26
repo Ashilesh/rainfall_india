@@ -11,3 +11,4 @@ class Index:
         self.card3_tail = 'Major Reservoirs'
         self.card4_head = '22,357 cr'
         self.card4_tail = 'Amount spend (2018-19)'
+        
