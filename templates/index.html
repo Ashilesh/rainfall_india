@@ -133,7 +133,7 @@
                         <div class="row">
                           <div class="col-md-12">
                             <div class="overivew-wrap">
-                              <input type="range" min="1901" max="2015" value="2015" class="slider" id="myRange">
+                              <input type="range" min="1901" max="2017" value="2017" class="slider" id="myRange">
 
                             </div>
                           </div>
@@ -146,32 +146,31 @@
                             <div class="col-lg-12">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="title-2">rainfall</h3>
+                                        <h3 class="title-2" id="year">rainfall (1939)</h3>
                                         <div class="chart-info">
                                             <div class="chart-info__left">
-                                                <div class="chart-note">
-                                                    <span class="dot dot--blue"></span>
-                                                    <span>Maximum</span>
+                                                <div class="chart-note" id="annual">
+
+                                                    <span>Annual : 1299</span>
                                                 </div>
-                                                <div class="chart-note mr-0">
-                                                    <span class="dot dot--green"></span>
-                                                    <span>Minimum</span>
-                                                </div>
+
                                             </div>
                                             <div class="chart-info__right">
-                                                <div class="chart-statis">
-                                                    <span class="index incre">
-                                                        <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
-                                                    <span class="label">Maximum</span>
+                                                <div class="chart-statis " align = 'center'>
+                                                    <span class="index incre" id="max_rain_val">12
+                                                        <i class="zmdi zmdi-long-arrow-up"></i></span>
+
+                                                    <span class="label" id="max_rain_month"></span>
                                                 </div>
                                                 <div class="chart-statis mr-0">
-                                                    <span class="index decre">
-                                                        <i class="zmdi zmdi-long-arrow-down"></i>10%</span>
-                                                    <span class="label">Minimum</span>
+                                                    <span class="index decre" id="min_rain_val">
+                                                        <i class="zmdi zmdi-long-arrow-down"></i></span>
+
+                                                    <span class="label" id="min_rain_month"></span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="recent-report__chart">
+                                        <div class="recent-report__chart" id="before_rainfall">
                                             <canvas id="rainfall_index"></canvas>
                                         </div>
                                     </div>
@@ -284,39 +283,35 @@
 {% block js %}
 
 <script type="text/javascript">
+
+
   var slider = document.getElementById("myRange");
 
   var output = document.getElementById("demo");
 
   output.innerHTML = slider.value;
 
- var d = [0, 0, 4.7, 0, 3.3, 182.3, 200, 230.4, 146.9, 100.4, 2.4, 2.7]
-
   var first_chart = true;
 
   if(first_chart){
-    create_chart(slider.value,d);
+    call_ajax(slider.value);
     first_chart = false;
   }
 
 
   slider.oninput = function(){
     output.innerHTML = this.value;
-
   }
 
   slider.onchange = function(){
-    $.ajax({
-      url : 'ajax/chart',
-      data : {
-        'year' : this.value
-      },
-      dataType : 'json',
-      success : function(data){
-        create_chart(data.value,data.x);
-        console.log(data.x)
-      }
-    });
+    console.log(myChart);
+
+    /* This prevents from mouse hovering problem*/
+    $('#rainfall_index').remove();
+    $('#before_rainfall').append('<canvas id = "rainfall_index"> </canvas> ');
+
+    call_ajax(this.value);
+    console.log('finishing')
   }
 
 
@@ -324,39 +319,58 @@
 
 <!-- script for chart-->
 
-function create_chart(year,x){
+function call_ajax(year){
+
+  $.ajax({
+    url : 'ajax/chart',
+    data : {
+      'year' : year
+    },
+    dataType : 'json',
+    success : function(data){
+      create_chart(data);
+      $('#max_rain_val').html('<i class="zmdi zmdi-long-arrow-up"></i>' + parseInt(data.max_rainfall_value) +' cm');
+      $('#max_rain_month').html(data.max_rainfall_month);
+
+      $('#min_rain_val').html('<i class="zmdi zmdi-long-arrow-down"></i>' + parseInt(data.min_rainfall_value) +' cm');
+      $('#min_rain_month').html(data.min_rainfall_month);
+
+      $('#annual').html('<span>Annual : ' + parseInt(data.annual) + ' cm</span>');
+
+      $('#year').html('Rainfall (' + year +')');
+    }
+  });
+
+  console.log('ajax')
+}
+
+
+function create_chart(data){
   const brandProduct = 'rgba(0,181,233,0.8)'
   const brandService = 'rgba(0,173,95,0.8)'
 
+  console.log('above chart')
+
   var elements = 12
-  var data1 = [0, 0, 4.7, 0, 3.3, 182.3, 82.5, 230.4, 146.9, 100.4, 2.4, 2.7]
-  var data2 = x
+  var data1 = data.x
   var arr1 = {{arr1|safe}}
 
-  var ctx = document.getElementById("rainfall_index");
-  if (ctx) {
-    ctx.height = 250;
-    var myChart = new Chart(ctx, {
+  myChart.destroy();
+
+  var ctx = document.getElementById('rainfall_index')
+  ctx.height = 250;
+  myChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: arr1,
         datasets: [
           {
-            label: year,
-            backgroundColor: brandService,
-            borderColor: 'transparent',
-            pointHoverBackgroundColor: '#fff',
-            borderWidth: 0,
-            data: data1
-
-          },
-          {
-            label: 'Maximum',
+            label: 'rainfall',
             backgroundColor: brandProduct,
             borderColor: 'transparent',
             pointHoverBackgroundColor: '#fff',
             borderWidth: 0,
-            data: data2
+            data: data1
 
           }
         ]
@@ -383,7 +397,7 @@ function create_chart(year,x){
               beginAtZero: true,
               maxTicksLimit: 5,
               stepSize: 50,
-              max: 350,
+              max: 450,
               fontFamily: "Poppins",
               fontSize: 12
             },
@@ -403,11 +417,88 @@ function create_chart(year,x){
           }
         }
 
-
       }
     });
-  }
+
+
+    console.log(myChart)
+
 
 }
+
+
+
+var elements = 12
+var data1_1 = [0, 0, 4.7, 0, 100, 182.3, 120.5, 230.4, 146.9, 100.4, 2.4, 2.7]
+
+const brandProduct_1 = 'rgba(0,181,233,0.8)'
+
+var ctx2 = document.getElementById("rainfall_index_pred");
+if (ctx2) {
+  ctx2.height = 250;
+  var myChart1 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May','June','July','August','September','Octomber','November','December'],
+      datasets: [
+        {
+          label: 'Average',
+          backgroundColor: '#ff7e4e',
+          borderColor: 'transparent',
+          pointHoverBackgroundColor: '#fff',
+          borderWidth: 0,
+          data: data1_1
+
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: false
+      },
+      responsive: true,
+      scales: {
+        xAxes: [{
+          gridLines: {
+            drawOnChartArea: false,
+            color: '#f2f2f2'
+          },
+          ticks: {
+            fontFamily: "Poppins",
+            fontSize: 12
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            stepSize: 50,
+            max: 350,
+            fontFamily: "Poppins",
+            fontSize: 12,
+
+          },
+          gridLines: {
+            display: false,
+            color: '#f2f2f2'
+
+          }
+        }]
+      },
+      elements: {
+        point: {
+          radius: 0,
+          hitRadius: 10,
+          hoverRadius: 4,
+          hoverBorderWidth: 3
+        }
+      }
+
+
+    }
+  });
+}
+
 </script>
 {% endblock %}

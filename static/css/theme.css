@@ -4109,7 +4109,7 @@ section {
 }
 
 .recent-report__chart canvas {
-    height: 250px;
+    height: 300px;
     width: 100%;
 }
 

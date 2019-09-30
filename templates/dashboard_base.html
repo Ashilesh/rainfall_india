@@ -42,7 +42,7 @@
       {% block css%}
 
       {% endblock %}
-  
+
 
     <!-- card style-->
     {% if request.resolver_match.url_name == "about_us" %}
@@ -416,77 +416,6 @@ if (ctx) {
   });
 }
 
-var elements = 12
-var data1_1 = [0, 0, 4.7, 0, 100, 182.3, 120.5, 230.4, 146.9, 100.4, 2.4, 2.7]
-
-const brandProduct_1 = 'rgba(0,181,233,0.8)'
-
-var ctx2 = document.getElementById("rainfall_index_pred");
-if (ctx2) {
-  ctx2.height = 250;
-  var myChart = new Chart(ctx2, {
-    type: 'line',
-    data: {
-      labels: ['January', 'February', 'March', 'April', 'May','June','July','August','September','Octomber','November','December'],
-      datasets: [
-        {
-          label: 'Average',
-          backgroundColor: '#ff7e4e',
-          borderColor: 'transparent',
-          pointHoverBackgroundColor: '#fff',
-          borderWidth: 0,
-          data: data1_1
-
-        }
-      ]
-    },
-    options: {
-      maintainAspectRatio: true,
-      legend: {
-        display: false
-      },
-      responsive: true,
-      scales: {
-        xAxes: [{
-          gridLines: {
-            drawOnChartArea: false,
-            color: '#f2f2f2'
-          },
-          ticks: {
-            fontFamily: "Poppins",
-            fontSize: 12
-          }
-        }],
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            maxTicksLimit: 5,
-            stepSize: 50,
-            max: 350,
-            fontFamily: "Poppins",
-            fontSize: 12,
-
-          },
-          gridLines: {
-            display: false,
-            color: '#f2f2f2'
-
-          }
-        }]
-      },
-      elements: {
-        point: {
-          radius: 0,
-          hitRadius: 10,
-          hoverRadius: 4,
-          hoverBorderWidth: 3
-        }
-      }
-
-
-    }
-  });
-}
 
 </script>
 

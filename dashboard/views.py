@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from .models import Index
+from . import helper
 
 # Create your views here.
 
@@ -26,11 +27,28 @@ def about_us(request):
 def vision(request):
     return render(request, 'vision.html')
 
+
 def ajax_chart(request):
     year = request.GET.get('year', None)
-    m_l = [110, 2, 6.7, 3, 5.6, 240, 220.5, 300.4, 170.5, 112, 3, 3.7]
+
+    list_get = helper.get_chart(year)
+
+    min_rainfall_value = min(list_get[1:13])
+    min_rainfall_index = list_get.index(min(list_get[1:13]))
+    min_rainfall_month = helper.get_month(min_rainfall_index)
+
+    max_rainfall_value = max(list_get[1:13])
+    max_rainfall_index = list_get.index(max(list_get[1:13]))
+    max_rainfall_month = helper.get_month(max_rainfall_index)
+
     data = {
-        'value' : year,
-        'x' : m_l
+        'year' : year,
+        'x' : list_get[1:13],
+        'annual' : list_get[13],
+        'min_rainfall_value' : min_rainfall_value,
+        'min_rainfall_month' : min_rainfall_month,
+        'max_rainfall_value' : max_rainfall_value,
+        'max_rainfall_month' : max_rainfall_month
     }
+
     return JsonResponse(data)
