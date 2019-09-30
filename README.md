@@ -7,7 +7,7 @@ This is webapp made using django framework
 Use the package manager [pip](https://pip.pypa.io/en/stable/)  to install django.
 
 ```bash
-pip install foobar
+pip install django
 ```
 
 ## How to run
