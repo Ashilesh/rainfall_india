@@ -7,5 +7,6 @@ urlpatterns =[
     path('map', views.map, name = 'map'),
     path('table', views.table, name = 'table'),
     path('about_us', views.about_us, name = 'about_us'),
-    path('vision', views.vision, name = 'vision')
+    path('vision', views.vision, name = 'vision'),
+    path('ajax/chart',views.ajax_chart, name = 'ajax_chart')
 ]

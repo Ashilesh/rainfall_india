@@ -1,5 +1,49 @@
 {% extends 'dashboard_base.html' %}
 
+{% block css%}
+  <style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 15px;
+  background-image: -webkit-linear-gradient(180deg, #3f5efb 0%, #fc466b 100%);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 75%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+  </style>
+
+{% endblock %}
+
 {% block content %}
 
             <!-- MAIN CONTENT-->
@@ -14,6 +58,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row m-t-25">
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
@@ -80,6 +125,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="">
+
+                        </div>
+                        <p>Year : <span id = "demo"></span></p>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="overivew-wrap">
+                              <input type="range" min="1901" max="2015" value="2015" class="slider" id="myRange">
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <br>
+
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="au-card recent-report">
@@ -217,4 +279,135 @@
                                 </div>
                             </div>
                         </div>
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+  var slider = document.getElementById("myRange");
+
+  var output = document.getElementById("demo");
+
+  output.innerHTML = slider.value;
+
+ var d = [0, 0, 4.7, 0, 3.3, 182.3, 200, 230.4, 146.9, 100.4, 2.4, 2.7]
+
+  var first_chart = true;
+
+  if(first_chart){
+    create_chart(slider.value,d);
+    first_chart = false;
+  }
+
+
+  slider.oninput = function(){
+    output.innerHTML = this.value;
+
+  }
+
+  slider.onchange = function(){
+    $.ajax({
+      url : 'ajax/chart',
+      data : {
+        'year' : this.value
+      },
+      dataType : 'json',
+      success : function(data){
+        create_chart(data.value,data.x);
+        console.log(data.x)
+      }
+    });
+  }
+
+
+
+
+<!-- script for chart-->
+
+function create_chart(year,x){
+  const brandProduct = 'rgba(0,181,233,0.8)'
+  const brandService = 'rgba(0,173,95,0.8)'
+
+  var elements = 12
+  var data1 = [0, 0, 4.7, 0, 3.3, 182.3, 82.5, 230.4, 146.9, 100.4, 2.4, 2.7]
+  var data2 = x
+  var arr1 = {{arr1|safe}}
+
+  var ctx = document.getElementById("rainfall_index");
+  if (ctx) {
+    ctx.height = 250;
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: arr1,
+        datasets: [
+          {
+            label: year,
+            backgroundColor: brandService,
+            borderColor: 'transparent',
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 0,
+            data: data1
+
+          },
+          {
+            label: 'Maximum',
+            backgroundColor: brandProduct,
+            borderColor: 'transparent',
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 0,
+            data: data2
+
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: true,
+        legend: {
+          display: false
+        },
+        responsive: true,
+        scales: {
+          xAxes: [{
+            gridLines: {
+              drawOnChartArea: true,
+              color: '#f2f2f2'
+            },
+            ticks: {
+              fontFamily: "Poppins",
+              fontSize: 12
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              maxTicksLimit: 5,
+              stepSize: 50,
+              max: 350,
+              fontFamily: "Poppins",
+              fontSize: 12
+            },
+            gridLines: {
+              display: true,
+              color: '#f2f2f2'
+
+            }
+          }]
+        },
+        elements: {
+          point: {
+            radius: 0,
+            hitRadius: 10,
+            hoverRadius: 4,
+            hoverBorderWidth: 3
+          }
+        }
+
+
+      }
+    });
+  }
+
+}
+</script>
 {% endblock %}

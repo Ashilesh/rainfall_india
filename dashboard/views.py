@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .models import Index
 
 # Create your views here.
@@ -7,9 +7,9 @@ from .models import Index
 # practice
 def index(request):
     index = Index()
-    arr = [0, 2, 6.7, 3, 5.6, 240, 220.5, 300.4, 170.5, 112, 3, 3.7]
+
     arr1 =  ['January', 'February', 'March', 'April', 'May','June','July','August','September','Octomber','November','December']
-    return render(request,'index.html',{'index' : index,'arr': arr, 'arr1' : arr1})
+    return render(request,'index.html',{'index' : index,'arr1' : arr1})
 
 def chart(request):
     return render(request, 'chart.html')
@@ -25,3 +25,12 @@ def about_us(request):
 
 def vision(request):
     return render(request, 'vision.html')
+
+def ajax_chart(request):
+    year = request.GET.get('year', None)
+    m_l = [110, 2, 6.7, 3, 5.6, 240, 220.5, 300.4, 170.5, 112, 3, 3.7]
+    data = {
+        'value' : year,
+        'x' : m_l
+    }
+    return JsonResponse(data)

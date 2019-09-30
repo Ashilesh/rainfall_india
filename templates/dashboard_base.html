@@ -37,6 +37,13 @@
 
     <!-- Map CSS-->
     <link rel="stylesheet" href="{% static 'css/jquery-jvectormap-2.0.3.css' %}">
+
+
+      {% block css%}
+
+      {% endblock %}
+  
+
     <!-- card style-->
     {% if request.resolver_match.url_name == "about_us" %}
 
@@ -329,6 +336,9 @@
   },
   onRegionTipShow: function(e, el, code){
     el.html(el.html()+' (GDP - '+Data[code]+')');
+  },
+  onRegionClick: function(e, code){
+    $('#map_head').html(code + ' map head');
   }
     });
 
@@ -338,90 +348,7 @@
 
 {% if request.resolver_match.url_name == "index" %}
 <!-- Dashboard chart-->
-<script type="text/javascript">
-const brandProduct = 'rgba(0,181,233,0.8)'
-const brandService = 'rgba(0,173,95,0.8)'
-
-var elements = 12
-var data1 = [0, 0, 4.7, 0, 3.3, 182.3, 82.5, 230.4, 146.9, 100.4, 2.4, 2.7]
-var data2 = {{arr}}
-var arr1 = {{arr1|safe}}
-
-var ctx = document.getElementById("rainfall_index");
-if (ctx) {
-  ctx.height = 250;
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: arr1,
-      datasets: [
-        {
-          label: 'Minimum',
-          backgroundColor: brandService,
-          borderColor: 'transparent',
-          pointHoverBackgroundColor: '#fff',
-          borderWidth: 0,
-          data: data1
-
-        },
-        {
-          label: 'Maximum',
-          backgroundColor: brandProduct,
-          borderColor: 'transparent',
-          pointHoverBackgroundColor: '#fff',
-          borderWidth: 0,
-          data: data2
-
-        }
-      ]
-    },
-    options: {
-      maintainAspectRatio: true,
-      legend: {
-        display: false
-      },
-      responsive: true,
-      scales: {
-        xAxes: [{
-          gridLines: {
-            drawOnChartArea: true,
-            color: '#f2f2f2'
-          },
-          ticks: {
-            fontFamily: "Poppins",
-            fontSize: 12
-          }
-        }],
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            maxTicksLimit: 5,
-            stepSize: 50,
-            max: 350,
-            fontFamily: "Poppins",
-            fontSize: 12
-          },
-          gridLines: {
-            display: true,
-            color: '#f2f2f2'
-
-          }
-        }]
-      },
-      elements: {
-        point: {
-          radius: 0,
-          hitRadius: 10,
-          hoverRadius: 4,
-          hoverBorderWidth: 3
-        }
-      }
-
-
-    }
-  });
-}
-
+<script>
 
 var ctx = document.getElementById("pi_index");
 if (ctx) {
@@ -735,7 +662,14 @@ if (ctx) {
 
 </script>
 
+
+
 {% endif %}
+
+{% block js%}
+
+{% endblock %}
+
 
 </body>
 
