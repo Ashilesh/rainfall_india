@@ -52,3 +52,26 @@ def ajax_chart(request):
     }
 
     return JsonResponse(data)
+
+def ajax_map(request):
+    state = request.GET.get('state',None)
+    state_name = helper.get_state_raw(state)
+
+    print(state_name)
+
+    state_info = helper.get_state_info(state_name)
+
+    state_actual_name = helper.get_actual_name(state)
+
+    data = {
+    'state' : state_actual_name,
+    'x' : state_info[:12],
+    'avg_rainfall' : state_info[12],
+    'min_rainfall' : state_info[13],
+    'min_rainfall_year' : state_info[14],
+    'max_rainfall' : state_info[15],
+    'max_rainfall_year' : state_info[16],
+    'total_rainfall' : state_info[17]
+    }
+
+    return JsonResponse(data)

@@ -8,5 +8,6 @@ urlpatterns =[
     path('table', views.table, name = 'table'),
     path('about_us', views.about_us, name = 'about_us'),
     path('vision', views.vision, name = 'vision'),
-    path('ajax/chart',views.ajax_chart, name = 'ajax_chart')
+    path('ajax/chart',views.ajax_chart, name = 'ajax_chart'),
+    path('ajax/map',views.ajax_map, name = 'ajax_map')
 ]

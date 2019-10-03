@@ -307,50 +307,14 @@
 
 <!-- vector map-->
 {% if request.resolver_match.url_name == "map" %}
-<script src="{% static 'js/jquery-jvectormap-2.0.3.min.js' %}"></script>
-<script src="{% static 'js/india_map.js' %}"></script>
-<script type="text/javascript">
-
-    var Data ={
-      "IN-BR" :	297.3,
-	"IN-PY"	: 289.4,
-  "IN-MH" :245.2
-    }
-
-    $('#india').vectorMap({
-      map: 'in_mill',
-      regionLabelStyle: {
-        initial: {
-        fill: '#B90E32'
-      },
-        hover:{
-          fill: 'black'
-        }
-      },
-      series: {
-    regions: [{
-      values: Data,
-      scale: ['#C8EEFF', '#0071A4'],
-      normalizeFunction: 'polynomial'
-    }]
-  },
-  onRegionTipShow: function(e, el, code){
-    el.html(el.html()+' (GDP - '+Data[code]+')');
-  },
-  onRegionClick: function(e, code){
-    $('#map_head').html(code + ' map head');
-  }
-    });
-
-
-</script>
 {% endif%}
 
-{% if request.resolver_match.url_name == "index" %}
+
 <!-- Dashboard chart-->
 <script>
 
-var ctx = document.getElementById("pi_index");
+
+var ctx = document.getElementById("dummy");
 if (ctx) {
   ctx.height = 280;
   var myChart = new Chart(ctx, {
@@ -417,9 +381,14 @@ if (ctx) {
 }
 
 
+
+
+
+
+
+
 </script>
 
-{% endif %}
 
 {% if request.resolver_match.url_name == "chart" %}
 

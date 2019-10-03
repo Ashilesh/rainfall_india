@@ -292,6 +292,7 @@
   output.innerHTML = slider.value;
 
   var first_chart = true;
+  var first = 1;
 
   if(first_chart){
     call_ajax(slider.value);
@@ -315,9 +316,6 @@
   }
 
 
-
-
-<!-- script for chart-->
 
 function call_ajax(year){
 
@@ -355,10 +353,13 @@ function create_chart(data){
   var data1 = data.x
   var arr1 = {{arr1|safe}}
 
-  myChart.destroy();
+  if(first == 0){
+    myChart.destroy();
+    console.log('inside destroy')
+  }
 
   var ctx = document.getElementById('rainfall_index')
-  ctx.height = 250;
+  ctx.height = 230;
   myChart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -421,7 +422,8 @@ function create_chart(data){
     });
 
 
-    console.log(myChart)
+    console.log(myChart);
+    first = 0;
 
 
 }
@@ -499,6 +501,73 @@ if (ctx2) {
     }
   });
 }
+
+var ctx = document.getElementById("pi_index");
+if (ctx) {
+  ctx.height = 280;
+  var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      datasets: [
+        {
+          label: "My First dataset",
+          data: [41.5, 37, 5, 8.5, 8],
+          backgroundColor: [
+            '#00b5e9',
+            '#fa4251',
+            '#00ad5f',
+            '#8E44AD',
+            '#F1C40F'
+          ],
+          hoverBackgroundColor: [
+            '#00b5e9',
+            '#fa4251',
+            '#00ad5f',
+            '#8E44AD',
+            '#F1C40F'
+          ],
+          borderWidth: [
+            0, 0, 0, 0, 0
+          ],
+          hoverBorderColor: [
+            'transparent',
+            'transparent',
+            'transparent',
+            'transparent',
+            'transparent'
+          ]
+        }
+      ],
+      labels: [
+        'Thermoelectric',
+        'Irrigation',
+        'Industrial',
+        'Domestic',
+        'Other'
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true,
+      cutoutPercentage: 55,
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      },
+      legend: {
+        display: false
+      },
+      tooltips: {
+        titleFontFamily: "Poppins",
+        xPadding: 15,
+        yPadding: 10,
+        caretPadding: 0,
+        bodyFontSize: 16
+      }
+    }
+  });
+}
+
 
 </script>
 {% endblock %}
