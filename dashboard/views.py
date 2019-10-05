@@ -13,7 +13,13 @@ def index(request):
     return render(request,'index.html',{'index' : index,'arr1' : arr1})
 
 def chart(request):
-    return render(request, 'chart.html')
+    water_dict = helper.get_quality_dict()
+    water_dict_rev = dict()
+
+    for key in water_dict:
+        water_dict[key].reverse()
+
+    return render(request, 'chart.html',{'water_quality': water_dict})
 
 def map(request):
     return render(request, 'map.html')

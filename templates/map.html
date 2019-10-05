@@ -25,7 +25,7 @@
                             <div class="col-md-5">
                                 <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                   <div class="au-card-inner">
-                                    <div style="height: 820px;">
+                                    <div>
                                     <div class="row">
                                       <div class="titel-1">
                                           <h2 class="state_name" id="state_name"></h2>
@@ -41,7 +41,7 @@
 
 
 
-                                            <h2 class="state" id="max_rainfall">1992 cm</h2>
+                                            <h2 class="state" id="max_rainfall"></h2>
                                             <span class="index incre">
                                               <i class="zmdi zmdi-long-arrow-up"></i>
                                             </span>
@@ -115,8 +115,9 @@
                                     </div>
 
 
-
                                     </div>
+
+
 
                                   </div>
                                 </div>
@@ -268,6 +269,11 @@ function create_chart(x_values){
               fontFamily: "Poppins",
               fontSize: 10,
               display: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year',
+              fontFamily: "Poppins"
             }
           }],
           yAxes: [{
@@ -284,6 +290,7 @@ function create_chart(x_values){
               color: '#f2f2f2'
 
             }
+
           }]
         },
         elements: {

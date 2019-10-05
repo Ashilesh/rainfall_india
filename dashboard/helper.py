@@ -11,6 +11,12 @@ def get_state_info(name):
     list_send = row.values.tolist()
     return list_send[0]
 
+def get_quality_dict():
+    dir_path = os.getcwd()
+    df = pd.read_csv(dir_path + '\\dashboard\\dataset\\water_quality.csv')
+    water_dict = df.to_dict('list')
+    return water_dict;
+
 def get_chart(year):
     year = int(year)
     dir_path = os.getcwd()
@@ -76,6 +82,7 @@ def get_state_raw(code):
     'IN-TR' : 'Nagaland',
     'IN-AR' : 'Arunachal_Pradesh',
     'IN-KA' : 'Karnataka',
+    'IN-PY' : 'Karnataka',
     'IN-PB' : 'Punjab',
     'IN-ML' : 'Assam',
     'IN-MN' : 'Nagaland',
@@ -89,6 +96,7 @@ def get_actual_name(code):
     states = {
     'IN-BR' : 'Bihar',
     'IN-DN' : 'Dadra and Nagar Haveli',
+    'IN-PY' : 'Puducherry',
     'IN-DL' : 'Delhi',
     'IN-NL' : 'Nagaland',
     'IN-WB' : 'Bengal',

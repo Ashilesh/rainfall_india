@@ -9,7 +9,7 @@
                       <div class="row">
                           <div class="col-md-12">
                               <div class="overview-wrap">
-                                  <h2 class="title-1">charts</h2>
+                                  <h2 class="title-1">Analysis</h2>
 
                               </div>
                           </div>
@@ -17,22 +17,579 @@
                       <br>
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="au-card m-b-30">
+                                <div class="au-card_chart1 m-b-30">
                                     <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Yearly Rainfall</h3>
-                                        <canvas id="sales-chart-1"></canvas>
+                                        <h3 class="title-2 m-b-40">PH</h3>
+                                        <canvas id="pH_chart"></canvas>
 
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="au-card m-b-30">
+                                <div class="au-card_chart2 m-b-30">
                                     <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">pH level</h3>
-                                        <canvas id="team-chart-1"></canvas>
+                                        <h3 class="title-2 m-b-40">Temperature</h3>
+                                        <canvas id="temp_chart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="au-card_chart3 m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Dissolved Oxygen</h3>
+                                        <canvas id="DO_chart"></canvas>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card_chart4 m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Conductivity</h3>
+                                        <canvas id="Conductivity_chart"></canvas>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="au-card_chart5 m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Nitritenann</h3>
+                                        <canvas id="nitrite_chart"></canvas>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card_chart6 m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Biochemical Oxygen Demand</h3>
+                                        <canvas id="BOD_chart"></canvas>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+var ctx = document.getElementById("pH_chart");
+if (ctx) {
+  ctx.height = 150;
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{water_quality.YEAR}},
+      type: 'line',
+      defaultFontFamily: 'Poppins',
+      datasets: [{
+        data: {{water_quality.PH}},
+        label: "pH",
+        backgroundColor: 'rgba(0,103,255,.10)',
+        borderColor: 'rgba(0,103,255,0.5)',
+        borderWidth: 3.5,
+        pointStyle: 'circle',
+        pointRadius: 5,
+        pointBorderColor: 'transparent',
+        pointBackgroundColor: 'rgba(0,0,0,0)',
+      },]
+    },
+    options: {
+      responsive: true,
+      tooltips: {
+        mode: 'index',
+        titleFontSize: 12,
+        titleFontColor: '#000',
+        bodyFontColor: '#000',
+        backgroundColor: '#fff',
+        titleFontFamily: 'Poppins',
+        bodyFontFamily: 'Poppins',
+        cornerRadius: 3,
+        intersect: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+        labels: {
+          usePointStyle: true,
+          fontFamily: 'Poppins',
+        },
+
+
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'YEAR',
+            fontColor: '#000'
+          },
+          ticks: {
+            fontFamily: "Poppins",
+            fontColor: '#000'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'pH',
+            fontFamily: "Poppins",
+            fontColor: '#000'
+          },
+          ticks: {
+            fontFamily: "Poppins",
+            fontColor: '#000'
+          }
+        }]
+      },
+      title: {
+        display: false,
+      }
+    }
+  });
+}
+
+  /* Temperature */
+
+  var ctx = document.getElementById("temp_chart");
+  if (ctx) {
+    ctx.height = 150;
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: {{water_quality.YEAR}},
+        type: 'line',
+        defaultFontFamily: 'Poppins',
+        datasets: [{
+          label: "Temperature",
+          data: {{water_quality.TEMP}},
+          backgroundColor: 'transparent',
+          borderColor: 'rgba(220,53,69,0.75)',
+          borderWidth: 3,
+          pointStyle: 'circle',
+          pointRadius: 5,
+          pointBorderColor: 'transparent',
+          pointBackgroundColor: 'rgba(220,53,69,0.75)',
+        }]
+      },
+      options: {
+        responsive: true,
+        tooltips: {
+          mode: 'index',
+          titleFontSize: 12,
+          titleFontColor: '#000',
+          bodyFontColor: '#000',
+          backgroundColor: '#fff',
+          titleFontFamily: 'Poppins',
+          bodyFontFamily: 'Poppins',
+          cornerRadius: 3,
+          intersect: false,
+        },
+        legend: {
+          display: false,
+          labels: {
+            usePointStyle: true,
+            fontFamily: 'Poppins',
+          },
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            gridLines: {
+              display: false,
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'YEAR'
+            },
+            ticks: {
+              fontFamily: "Poppins"
+            }
+          }],
+          yAxes: [{
+            display: true,
+            gridLines: {
+              display: true,
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Temprature',
+              fontFamily: "Poppins"
+
+            },
+            ticks: {
+              fontFamily: "Poppins"
+            }
+          }]
+        },
+        title: {
+          display: false,
+          text: 'Normal Legend'
+        }
+      }
+    });
+  }
+
+
+/* DO chart */
+  var ctx = document.getElementById("DO_chart");
+  if (ctx) {
+    ctx.height = 150;
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: {{water_quality.YEAR}},
+        type: 'line',
+        defaultFontFamily: 'Poppins',
+        datasets: [{
+          data: {{water_quality.DO}},
+          label: "DO(mg/l)",
+          backgroundColor: 'rgba(249, 103, 20, .10)',
+          borderColor: '#f96714',
+          borderWidth: 3.5,
+          pointStyle: 'circle',
+          pointRadius: 5,
+          pointBorderColor: 'transparent',
+          pointBackgroundColor: 'rgba(0,0,0,0)',
+        },]
+      },
+      options: {
+        responsive: true,
+        tooltips: {
+          mode: 'index',
+          titleFontSize: 12,
+          titleFontColor: '#000',
+          bodyFontColor: '#000',
+          backgroundColor: '#fff',
+          titleFontFamily: 'Poppins',
+          bodyFontFamily: 'Poppins',
+          cornerRadius: 3,
+          intersect: false,
+        },
+        legend: {
+          display: false,
+          position: 'top',
+          labels: {
+            usePointStyle: true,
+            fontFamily: 'Poppins',
+          },
+
+
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            gridLines: {
+              display: false,
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'YEAR'
+            },
+            ticks: {
+              fontFamily: "Poppins"
+            }
+          }],
+          yAxes: [{
+            display: true,
+            gridLines: {
+              display: false,
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Dissolved Oxygen (mg/l)',
+              fontFamily: "Poppins"
+            },
+            ticks: {
+              fontFamily: "Poppins"
+            }
+          }]
+        },
+        title: {
+          display: false,
+        }
+      }
+    });
+  }
+
+/* conductivity */
+var ctx = document.getElementById("Conductivity_chart");
+if (ctx) {
+  ctx.height = 150;
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{water_quality.YEAR}},
+      type: 'line',
+      defaultFontFamily: 'Poppins',
+      datasets: [{
+        label: "Conductivity (µmhos/cm)",
+        data: {{water_quality.CONDUCTIVITY}},
+        backgroundColor: 'transparent',
+        borderColor: '#d5ae41',
+        borderWidth: 3,
+        pointStyle: 'circle',
+        pointRadius: 5,
+        pointBorderColor: 'transparent',
+        pointBackgroundColor: '#d5ae41',
+      }]
+    },
+    options: {
+      responsive: true,
+      tooltips: {
+        mode: 'index',
+        titleFontSize: 12,
+        titleFontColor: '#000',
+        bodyFontColor: '#000',
+        backgroundColor: '#fff',
+        titleFontFamily: 'Poppins',
+        bodyFontFamily: 'Poppins',
+        cornerRadius: 3,
+        intersect: false,
+      },
+      legend: {
+        display: false,
+        labels: {
+          usePointStyle: true,
+          fontFamily: 'Poppins',
+        },
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'YEAR'
+          },
+          ticks: {
+            fontFamily: "Poppins"
+          }
+        }],
+        yAxes: [{
+          display: true,
+          gridLines: {
+            display: true,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Conductivity (µmhos/cm)',
+            fontFamily: "Poppins"
+
+          },
+          ticks: {
+            fontFamily: "Poppins"
+          }
+        }]
+      },
+      title: {
+        display: false,
+        text: 'Normal Legend'
+      }
+    }
+  });
+}
+
+/* Nitrite chart */
+
+var ctx = document.getElementById("nitrite_chart");
+if (ctx) {
+  ctx.height = 150;
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{water_quality.YEAR}},
+      type: 'line',
+      defaultFontFamily: 'Poppins',
+      datasets: [{
+        data: {{water_quality.NITRITE}},
+        label: "Nitritenann (mg/l)",
+        backgroundColor: 'rgba(72, 81, 103, .10)',
+        borderColor: '#485167',
+        borderWidth: 3.5,
+        pointStyle: 'circle',
+        pointRadius: 5,
+        pointBorderColor: 'transparent',
+        pointBackgroundColor: 'rgba(0,0,0,0)',
+      },]
+    },
+    options: {
+      responsive: true,
+      tooltips: {
+        mode: 'index',
+        titleFontSize: 12,
+        titleFontColor: '#000',
+        bodyFontColor: '#000',
+        backgroundColor: '#fff',
+        titleFontFamily: 'Poppins',
+        bodyFontFamily: 'Poppins',
+        cornerRadius: 3,
+        intersect: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+        labels: {
+          usePointStyle: true,
+          fontFamily: 'Poppins',
+        },
+
+
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'YEAR',
+            fontColor: '#000'
+          },
+          ticks: {
+            fontFamily: "Poppins",
+            fontColor: '#000'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Nitritenann (mg/l)',
+            fontFamily: "Poppins",
+            fontColor: '#000'
+          },
+          ticks: {
+            fontFamily: "Poppins",
+              fontColor: '#000'
+          }
+        }]
+      },
+      title: {
+        display: false,
+      }
+    }
+  });
+}
+
+/* BOD chart */
+
+var ctx = document.getElementById("BOD_chart");
+if (ctx) {
+  ctx.height = 150;
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{water_quality.YEAR}},
+      type: 'line',
+      defaultFontFamily: 'Poppins',
+      datasets: [{
+        label: "BOD (mg/l)",
+        data: {{water_quality.BOD}},
+        backgroundColor: 'transparent',
+        borderColor: '#e94b3c',
+        borderWidth: 3,
+        pointStyle: 'circle',
+        pointRadius: 5,
+        pointBorderColor: 'transparent',
+        pointBackgroundColor: '#e94b3c',
+      }]
+    },
+    options: {
+      responsive: true,
+      tooltips: {
+        mode: 'index',
+        titleFontSize: 12,
+        titleFontColor: '#000',
+        bodyFontColor: '#000',
+        backgroundColor: '#fff',
+        titleFontFamily: 'Poppins',
+        bodyFontFamily: 'Poppins',
+        cornerRadius: 3,
+        intersect: false,
+      },
+      legend: {
+        display: false,
+        labels: {
+          usePointStyle: true,
+          fontFamily: 'Poppins',
+        },
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'YEAR'
+          },
+          ticks: {
+            fontFamily: "Poppins"
+          }
+        }],
+        yAxes: [{
+          display: true,
+          gridLines: {
+            display: true,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'BOD (mg/l)',
+            fontFamily: "Poppins"
+
+          },
+          ticks: {
+            fontFamily: "Poppins"
+          }
+        }]
+      },
+      title: {
+        display: false,
+        text: 'Normal Legend'
+      }
+    }
+  });
+}
+
+</script>
 
 {% endblock %}

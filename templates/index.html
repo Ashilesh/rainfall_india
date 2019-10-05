@@ -254,7 +254,7 @@
 
                                                   </tr>
                                                   <tr>
-                                                      <td> You are 60% water. Save 60% of YOURSELF.y</td>
+                                                      <td> You are 60% water. Save 60% of YOURSELF.</td>
 
                                                   </tr>
                                               </tbody>
@@ -391,6 +391,11 @@ function create_chart(data){
             ticks: {
               fontFamily: "Poppins",
               fontSize: 12
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Month',
+              fontFamily: "Poppins"
             }
           }],
           yAxes: [{
@@ -406,6 +411,11 @@ function create_chart(data){
               display: true,
               color: '#f2f2f2'
 
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Rainfall (cm)',
+              fontFamily: "Poppins"
             }
           }]
         },
@@ -469,6 +479,11 @@ if (ctx2) {
           ticks: {
             fontFamily: "Poppins",
             fontSize: 12
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Month',
+            fontFamily: "Poppins"
           }
         }],
         yAxes: [{
@@ -485,6 +500,11 @@ if (ctx2) {
             display: false,
             color: '#f2f2f2'
 
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Rainfall (cm)',
+            fontFamily: "Poppins"
           }
         }]
       },
