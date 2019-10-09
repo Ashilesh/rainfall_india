@@ -4,13 +4,10 @@ This is webapp made using django framework
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/)  to install django,pandas,numpy,sklearn.
+Use the package manager [pip](https://pip.pypa.io/en/stable/)  to install all the dependencies
 
 ```bash
-pip install django
-pip install pandas
-pip install numpy
-pip install sklearn
+pip install -r requirements.txt
 ```
 
 ## How to run
