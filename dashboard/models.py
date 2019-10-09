@@ -5,7 +5,7 @@ class Index:
     def __init__(self):
         self.card1_head = 29
         self.card1_tail = 'States'
-        self.card2_head = '120 cm'
+        self.card2_head = '881 cm'
         self.card2_tail = 'Average Rainfall'
         self.card3_head = 91
         self.card3_tail = 'Major Reservoirs'

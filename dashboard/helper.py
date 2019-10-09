@@ -1,5 +1,35 @@
 import pandas as pd
 import os
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+def get_rainfall_prediction():
+    dir_path = os.getcwd()
+    dataset = pd.read_csv(dir_path + '\\dashboard\\dataset\\yearly_rainfall.csv')
+    a = list()
+
+    for i in range(2,14):
+        y = dataset.iloc[:,i].values
+        X = dataset.iloc[:,1].values
+        regressor = LinearRegression()
+        regressor.fit(X.reshape(-1,1), y.reshape(-1,1))
+        pred_year = np.array([2019])
+        y_pred = regressor.predict(pred_year.reshape(-1,1))
+
+        a.append(y_pred.tolist())
+
+    m_list = list()
+
+    for i in range(0,12):
+        m_list.append(a[i][0][0])
+
+    print('000000000000000000000000000000000000000000')
+    print(m_list)
+    print('000000000000000000000000000000000000000000')
+
+    return m_list
+
+
 
 def get_state_info(name):
     dir_path = os.getcwd()

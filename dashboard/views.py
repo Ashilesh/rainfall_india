@@ -10,7 +10,8 @@ def index(request):
     index = Index()
 
     arr1 =  ['January', 'February', 'March', 'April', 'May','June','July','August','September','Octomber','November','December']
-    return render(request,'index.html',{'index' : index,'arr1' : arr1})
+    pred = helper.get_rainfall_prediction()
+    return render(request,'index.html',{'index' : index,'arr1' : arr1, 'pred' : pred})
 
 def chart(request):
     water_dict = helper.get_quality_dict()

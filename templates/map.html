@@ -89,7 +89,9 @@
                                     <div class="row">
                                       <div class="col-md-12">
                                         <div class="au-card_chart">
+
                                           <div class="recent-report__chart" id = "before_rainfall_map">
+
                                               <canvas id="rainfall_map"></canvas>
                                           </div>
                                         </div>
@@ -254,6 +256,10 @@ function create_chart(x_values){
       },
       options: {
         maintainAspectRatio: true,
+        title:{
+          display: true,
+          text: 'Avg rainfall'
+        },
         legend: {
           display: false
         },
@@ -272,7 +278,7 @@ function create_chart(x_values){
             },
             scaleLabel: {
               display: true,
-              labelString: 'Year',
+              labelString: 'Month',
               fontFamily: "Poppins"
             }
           }],

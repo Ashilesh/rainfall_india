@@ -1,45 +1,3 @@
-/*------------------------------------------------------------------
-[Master Stylesheet]
-
-Project:  CoolAdmin
-Version:	1.0
-Last change:	08/10/2018 [Add Define a table of contents Link]
-Assigned to:	Hau Nguyen
-Primary use:	Open Source
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[LAYOUT]
-
-* body
-    + Header / header
-	+ Page Content / .page-content .name-page
-        + Section Layouts / section .name-section
-        ...
-	+ Footer / footer
-
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-# [Color codes]
-
-# Text Color (text): #666666
-# Text Color Deep (Text, title): #333333
-
-------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[Typography]
-
-Notes:	decreasing heading by 0.4em with every subsequent heading level
--------------------------------------------------------------------*/
-/*-----------------------------------------------------*/
-/*                   SETTINGS                          */
-/*-----------------------------------------------------*/
-/*-----------------------------------------------------*/
-/*                   TOOLS                             */
-/*-----------------------------------------------------*/
-/*-----------------------------------------------------*/
-/*                   GENERIC                           */
-/*-----------------------------------------------------*/
-/* ----- Normalize ----- */
 * {
     margin: 0;
     padding: 0;
@@ -245,7 +203,7 @@ section {
 }
 
 .section__content {
-    position: relative;
+
     margin: 0 auto;
     z-index: 1;
 }
@@ -254,6 +212,9 @@ section {
     max-width: 1830px;
 }
 
+.section__content_not{
+    position: relative;
+}
 .section__content--p30 {
     padding: 0 30px;
 }
@@ -3278,6 +3239,162 @@ section {
     overflow: hidden;
 }
 
+.au-card_chart {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    padding-right: 35px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: linear-gradient(120deg,#00c3ff, #ffff1c);
+    overflow: hidden;
+}
+
+.au-card_map{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(120deg,#FC5C7D, #6A82FB);
+  overflow: hidden;
+}
+
+.au-card_box1{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background:linear-gradient(120deg,#7F7FD5, #86A8E7, #91EAE4);
+  overflow: hidden;
+}
+
+.au-card_box2{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #00F260, #0575E6);
+  overflow: hidden;
+}
+
+.au-card_box3{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background:linear-gradient(120deg, #00b09b, #96c93d);
+  overflow: hidden;
+}
+
+.au-card_box4{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background:linear-gradient(120deg, #24C6DC, #514A9D);
+  overflow: hidden;
+}
+
+.au-card_chart1{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(300deg, #e1eec3, #f05053);
+  overflow: hidden;
+}
+
+.au-card_chart2{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(300deg, #22c1c3, #fdbb2d);
+  overflow: hidden;
+}
+
+.au-card_chart3{
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(300deg, #0cebeb, #20e3b2, #29ffc6);
+  overflow: hidden;
+}
+
+.au-card_chart4 {
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(2700deg, #1c92d2, #f2fcfe);
+  overflow: hidden;
+}
+
+.au-card_chart6 {
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(270deg, #DCE35B, #45B649);
+  overflow: hidden;
+}
+
+.au-card_chart5 {
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  padding-right: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: linear-gradient(2700deg, #4568DC, #B06AB3);
+  overflow: hidden;
+}
+
 .au-card--border {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -5387,6 +5504,19 @@ section {
 
 .switch.switch-text .switch-input:checked ~ .switch-handle {
     left: 26px;
+}
+
+.state_name{
+  padding-left : 20px;
+  background: #DDDDDD;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.state{
+  background: #ecf0f1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .switch.switch-text.switch-lg {
@@ -14681,6 +14811,7 @@ section {
 
 img {
   max-width: 100%;
+  display: inline-block;
 }
 
 .container {

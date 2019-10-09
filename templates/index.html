@@ -133,7 +133,7 @@
                         <div class="row">
                           <div class="col-md-12">
                             <div class="overivew-wrap">
-                              <input type="range" min="1901" max="2017" value="2017" class="slider" id="myRange">
+                              <input type="range" min="1901" max="2018" value="2018" class="slider" id="myRange">
 
                             </div>
                           </div>
@@ -146,12 +146,12 @@
                             <div class="col-lg-12">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="title-2" id="year">rainfall (1939)</h3>
+                                        <h3 class="title-2" id="year"></h3>
                                         <div class="chart-info">
                                             <div class="chart-info__left">
                                                 <div class="chart-note" id="annual">
 
-                                                    <span>Annual : 1299</span>
+                                                    <span></span>
                                                 </div>
 
                                             </div>
@@ -459,7 +459,7 @@ if (ctx2) {
           borderColor: 'transparent',
           pointHoverBackgroundColor: '#fff',
           borderWidth: 0,
-          data: data1_1
+          data: {{pred|safe}}
 
         }
       ]
