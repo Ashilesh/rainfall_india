@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 
 def get_rainfall_prediction():
     dir_path = os.getcwd()
-    dataset = pd.read_csv(dir_path + '\\dashboard\\dataset\\yearly_rainfall.csv')
+    dataset = pd.read_csv(os.path.join(dir_path,'dashboard','dataset','yearly_rainfall.csv'))
     a = list()
 
     for i in range(2,14):
@@ -23,9 +23,7 @@ def get_rainfall_prediction():
     for i in range(0,12):
         m_list.append(a[i][0][0])
 
-    print('000000000000000000000000000000000000000000')
     print(m_list)
-    print('000000000000000000000000000000000000000000')
 
     return m_list
 
@@ -33,7 +31,7 @@ def get_rainfall_prediction():
 
 def get_state_info(name):
     dir_path = os.getcwd()
-    df = pd.read_csv(dir_path + '\\dashboard\\dataset\\state_rainfall.csv')
+    df = pd.read_csv(os.path.join(dir_path,'dashboard','dataset','state_rainfall.csv'))
     data = df.iloc[:,1:]
     row = data[data['state'] == name]
 
@@ -43,14 +41,14 @@ def get_state_info(name):
 
 def get_quality_dict():
     dir_path = os.getcwd()
-    df = pd.read_csv(dir_path + '\\dashboard\\dataset\\water_quality.csv')
+    df = pd.read_csv(os.path.join(dir_path,'dashboard','dataset','water_quality.csv'))
     water_dict = df.to_dict('list')
     return water_dict;
 
 def get_chart(year):
     year = int(year)
     dir_path = os.getcwd()
-    df = pd.read_csv(dir_path + '\\dashboard\\dataset\\yearly_rainfall.csv')
+    df = pd.read_csv(os.path.join(dir_path,'dashboard','dataset','yearly_rainfall.csv'))
 
     data = df.iloc[:,1:]
 
