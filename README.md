@@ -1,6 +1,7 @@
 # rainfall india
 
-This is webapp made using django framework
+This is webapp made using django framework.
+This webapp works only in python 3.x
 
 ## Installation
 
