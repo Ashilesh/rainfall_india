@@ -17,3 +17,11 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 After that open your browser and go to `localhost:8000`. 
+
+## Screenshots
+
+![Alt text](/screenshots/1.jpg?raw=true "Screenshot 1")
+
+
+
+![Alt text](/screenshots/2.jpg?raw=true "Screenshot 2")
