@@ -34,15 +34,20 @@ def get_state_info(name):
     df = pd.read_csv(os.path.join(dir_path,'dashboard','dataset','state_rainfall.csv'))
     data = df.iloc[:,1:]
     row = data[data['state'] == name]
-
+    print('_____________________________________________________________')
     print(row)
     list_send = row.values.tolist()
+
+    print('[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]')
+    print(list_send)
     return list_send[0]
 
 def get_quality_dict():
     dir_path = os.getcwd()
     df = pd.read_csv(os.path.join(dir_path,'dashboard','dataset','water_quality.csv'))
     water_dict = df.to_dict('list')
+    print('******************************************')
+    print(water_dict)
     return water_dict;
 
 def get_chart(year):

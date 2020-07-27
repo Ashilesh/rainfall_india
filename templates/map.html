@@ -1,137 +1,135 @@
-
-
 {% extends 'dashboard_base.html'%}
 
 {% load static %}
 
 {% block content %}
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
+<div class="main-content">
+  <div class="section__content section__content--p30">
+    <div class="container-fluid">
 
 
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <!-- MAP DATA-->
-                                <div class="au-card_map">
-                                  <h1 class="title-1" id="map_head">
-                                      <i class="zmdi zmdi-map"></i> India</h1>
-                                  <div class="m-t-20 m-b-20">
-                                      <div id="india" style="height: 720px;"></div>
-                                  </div>
-                                </div>
-                                <!-- END MAP DATA-->
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="au-card au-card--bg-blue au-card-top-countries">
-                                  <div class="au-card-inner">
-                                    <div>
-                                    <div class="row">
-                                      <div class="titel-1">
-                                          <h2 class="state_name" id="state_name"></h2>
-                                      </div>
-                                    </div>
-                                    <div style="padding-top: 20px">
+      <div class="row">
+        <div class="col-lg-7">
+          <!-- MAP DATA-->
+          <div class="au-card_map">
+            <h1 class="title-1" id="map_head">
+              <i class="zmdi zmdi-map"></i> India</h1>
+            <div class="m-t-20 m-b-20">
+              <div id="india" style="height: 720px;"></div>
+            </div>
+          </div>
+          <!-- END MAP DATA-->
+        </div>
+        <div class="col-lg-5">
+          <div class="au-card au-card--bg-blue au-card-top-countries">
+            <div class="au-card-inner">
+              <div>
+                <div class="row">
+                  <div class="titel-1">
+                    <h2 class="state_name" id="state_name"></h2>
+                  </div>
+                </div>
+                <div style="padding-top: 20px">
 
-                                    </div>
-                                    <div class="row">
+                </div>
+                <div class="row">
 
-                                      <div class="col-lg-6">
-                                        <div class="au-card_box1">
-
-
-
-                                            <h2 class="state" id="max_rainfall"></h2>
-                                            <span class="index incre">
-                                              <i class="zmdi zmdi-long-arrow-up"></i>
-                                            </span>
-                                            max in
-                                            <span id = "max_rainfall_year"></span>
-
-                                        </div>
-                                      </div>
-
-                                      <div class="col-lg-6">
-                                        <div class="au-card_box2">
-
-                                          <h2 class="state" id = "min_rainfall"></h2>
-                                          <span class="index decre">
-                                            <i class="zmdi zmdi-long-arrow-down"></i>
-                                          </span>
-                                          min in
-                                          <span id = "min_rainfall_year"></span>
-
-                                        </div>
-                                      </div>
-
-                                    </div>
-
-                                    <div style="padding-top: 15px">
-
-                                    </div>
-
-                                    <div class="row">
-
-                                      <div class="col-lg-12">
-                                        <div class="au-card_box3">
-
-                                          <h2 class="state" id = "avg_rainfall"></h2>
-
-
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div style="padding-top: 15px">
-
-                                    </div>
-
-                                    <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="au-card_chart">
-
-                                          <div class="recent-report__chart" id = "before_rainfall_map">
-
-                                              <canvas id="rainfall_map"></canvas>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div style="padding-top: 15px">
-
-                                    </div>
-
-                                    <div class="row">
-
-                                      <div class="col-lg-12">
-                                        <div class="au-card_box4">
-
-                                          <h2 class="state" id = "total_rainfall"></h2>
-
-                                          <span> since 1901 to 2017</span>
-
-
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    </div>
+                  <div class="col-lg-6">
+                    <div class="au-card_box1">
 
 
 
-                                  </div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
+                      <h2 class="state" id="max_rainfall"></h2>
+                      <span class="index incre">
+                        <i class="zmdi zmdi-long-arrow-up"></i>
+                      </span>
+                      max in
+                      <span id="max_rainfall_year"></span>
 
                     </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="au-card_box2">
+
+                      <h2 class="state" id="min_rainfall"></h2>
+                      <span class="index decre">
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                      </span>
+                      min in
+                      <span id="min_rainfall_year"></span>
+
+                    </div>
+                  </div>
+
                 </div>
+
+                <div style="padding-top: 15px">
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-lg-12">
+                    <div class="au-card_box3">
+
+                      <h2 class="state" id="avg_rainfall"></h2>
+
+
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding-top: 15px">
+
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="au-card_chart">
+
+                      <div class="recent-report__chart" id="before_rainfall_map">
+
+                        <canvas id="rainfall_map"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding-top: 15px">
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-lg-12">
+                    <div class="au-card_box4">
+
+                      <h2 class="state" id="total_rainfall"></h2>
+
+                      <span> since 1901 to 2017</span>
+
+
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
             </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
@@ -142,106 +140,106 @@
 <script src="{% static 'js/india_map.js' %}"></script>
 <script type="text/javascript">
 
-    var Data ={
+  var Data = {
 
-    }
-    first = 1;
-    repeat = 1;
+  }
+  first = 1;
+  repeat = 1;
 
-    $('#india').vectorMap({
-      map: 'in_mill',
-      selectedRegions: 'IN-MH',
-      regionsSelectable: true,
-      regionsSelectableOne: true,
+  $('#india').vectorMap({
+    map: 'in_mill',
+    selectedRegions: 'IN-MH',
+    regionsSelectable: true,
+    regionsSelectableOne: true,
 
-      regionLabelStyle: {
-        initial: {
+    regionLabelStyle: {
+      initial: {
         fill: '#B90E32'
       },
-        hover:{
-          fill: 'black'
-        }
-      },
+      hover: {
+        fill: 'black'
+      }
+    },
 
-      regionStyle: {
-        selected: {
-          fill: '#566573'
-        }
-      },
+    regionStyle: {
+      selected: {
+        fill: '#566573'
+      }
+    },
 
-      series: {
-    regions: [{
-      values: Data,
-      scale: ['#C8EEFF', '#0071A4'],
-      normalizeFunction: 'polynomial'
-    }]
-  },
-  onRegionTipShow: function(e, el, code){
-    el.html(el.html());
-  },
-  onRegionSelected: function(e, code,select,arr){
-    console.log(first);
+    series: {
+      regions: [{
+        values: Data,
+        scale: ['#C8EEFF', '#0071A4'],
+        normalizeFunction: 'polynomial'
+      }]
+    },
+    onRegionTipShow: function (e, el, code) {
+      el.html(el.html());
+    },
+    onRegionSelected: function (e, code, select, arr) {
+      console.log(first);
 
-    $('#rainfall_map').remove();
-    $('#before_rainfall_map').append('<canvas id="rainfall_map"></canvas>');
+      $('#rainfall_map').remove();
+      $('#before_rainfall_map').append('<canvas id="rainfall_map"></canvas>');
 
-    if(repeat == 1){
-      $.ajax({
-        url : 'ajax/map',
-        data : {
-          'state' : code
-        },
-        dataType : 'json',
-        success : function(data){
-          create_chart(data.x);
-          $('#state_name').html(data.state);
-          $('#min_rainfall').html(parseInt(data.min_rainfall) + ' cm');
-          $('#min_rainfall_year').html(data.min_rainfall_year);
+      if (repeat == 1) {
+        $.ajax({
+          url: 'ajax/map',
+          data: {
+            'state': code
+          },
+          dataType: 'json',
+          success: function (data) {
+            create_chart(data.x);
+            $('#state_name').html(data.state);
+            $('#min_rainfall').html(parseInt(data.min_rainfall) + ' mm');
+            $('#min_rainfall_year').html(data.min_rainfall_year);
 
-          $('#max_rainfall').html(parseInt(data.max_rainfall) + ' cm');
-          $('#max_rainfall_year').html(data.max_rainfall_year);
+            $('#max_rainfall').html(parseInt(data.max_rainfall) + ' mm');
+            $('#max_rainfall_year').html(data.max_rainfall_year);
 
-          $('#avg_rainfall').html(parseInt(data.avg_rainfall) +' cm avg rainfall in a year');
-          $('#total_rainfall').html(parseInt(data.total_rainfall) + ' cm total rainfall');
+            $('#avg_rainfall').html(parseInt(data.avg_rainfall) + ' mm avg rainfall in a year');
+            $('#total_rainfall').html(parseInt(data.total_rainfall) + ' mm total rainfall');
 
-        }
-      });
+          }
+        });
+      }
+
+      if (repeat == 1) {
+        repeat = 0;
+      }
+      else {
+        repeat = 1;
+      }
+
+
+      /*end ajax*/
     }
-
-    if(repeat == 1){
-      repeat = 0;
-    }
-    else {
-      repeat = 1;
-    }
-
-
-    /*end ajax*/
-  }
-    });
+  });
 
 
 
-function create_chart(x_values){
+  function create_chart(x_values) {
 
-  var data1_1 =  x_values
+    var data1_1 = x_values
 
-  const brandProduct_1 = 'rgba(0,181,233,0.8)'
+    const brandProduct_1 = 'rgba(0,181,233,0.8)'
 
-  var ctx2 = document.getElementById("rainfall_map");
+    var ctx2 = document.getElementById("rainfall_map");
 
 
     ctx2.height = 250;
 
-    if(first == 0){
-        myChart.destroy();
-        console.log('inside destroy')
+    if (first == 0) {
+      myChart.destroy();
+      console.log('inside destroy')
     }
 
     myChart = new Chart(ctx2, {
       type: 'line',
       data: {
-        labels: ['January', 'February','March','April','May','June','July','August','September','Octomber','November','December'],
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octomber', 'November', 'December'],
         datasets: [
           {
             label: 'Average',
@@ -256,7 +254,7 @@ function create_chart(x_values){
       },
       options: {
         maintainAspectRatio: true,
-        title:{
+        title: {
           display: true,
           text: 'Avg rainfall'
         },
@@ -315,7 +313,7 @@ function create_chart(x_values){
     console.log(myChart);
     first = 0;
 
-}
+  }
 
 </script>
 
